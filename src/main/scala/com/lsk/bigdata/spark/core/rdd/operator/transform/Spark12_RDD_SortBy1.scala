@@ -19,7 +19,9 @@ object Spark12_RDD_SortBy1 {
 
         newRDD.collect().foreach(println)
 
-
+//        (11,2)
+//        (2,3)
+//        (1,1)
 
 
         sc.stop()

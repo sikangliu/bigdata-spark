@@ -25,6 +25,9 @@ object Spark23_RDD_Cogroup {
 
         cgRDD.collect().foreach(println)
 
+//        (a,(CompactBuffer(1),CompactBuffer(4)))
+//        (b,(CompactBuffer(2),CompactBuffer(5)))
+//        (c,(CompactBuffer(),CompactBuffer(6, 7)))
 
         sc.stop()
 

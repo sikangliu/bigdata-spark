@@ -22,8 +22,8 @@ object Spark17_RDD_AggregateByKey2 {
         rdd.foldByKey(0)(_+_).collect.foreach(println)
 
 
-
-
+//        (b,12)
+//        (a,9)
 
         sc.stop()
 

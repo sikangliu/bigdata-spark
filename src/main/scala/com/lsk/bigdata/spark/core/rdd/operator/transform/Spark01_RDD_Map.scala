@@ -32,5 +32,7 @@ object Spark01_RDD_Map {
 
         sc.stop()
 
+        // 1,2,3,4
+        // 2,4,6,8
     }
 }

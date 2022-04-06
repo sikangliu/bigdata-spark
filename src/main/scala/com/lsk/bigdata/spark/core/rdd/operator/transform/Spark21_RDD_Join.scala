@@ -27,7 +27,11 @@ object Spark21_RDD_Join {
 
         joinRDD.collect().foreach(println)
 
-
+//        (a,(1,5))
+//        (a,(1,4))
+//        (a,(2,5))
+//        (a,(2,4))
+//        (c,(3,6))
 
         sc.stop()
 

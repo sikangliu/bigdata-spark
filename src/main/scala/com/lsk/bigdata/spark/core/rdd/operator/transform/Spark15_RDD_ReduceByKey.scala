@@ -21,7 +21,7 @@ object Spark15_RDD_ReduceByKey {
         // 【1，2，3】
         // 【3，3】
         // 【6】
-        // reduceByKey中如果key的数据只有一个，是不会参与运算的。
+        // 注意：reduceByKey中如果key的数据只有一个，是不会参与运算的。("b", 4)不参与计算
         val reduceRDD: RDD[(String, Int)] = rdd.reduceByKey( (x:Int, y:Int) => {
             println(s"x = ${x}, y = ${y}")
             x + y
@@ -29,7 +29,10 @@ object Spark15_RDD_ReduceByKey {
 
         reduceRDD.collect().foreach(println)
 
-
+//        x = 1, y = 2
+//        x = 3, y = 3
+//        (a,6)
+//        (b,4)
 
 
         sc.stop()

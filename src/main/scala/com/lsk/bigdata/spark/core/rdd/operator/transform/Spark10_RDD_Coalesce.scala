@@ -21,8 +21,15 @@ object Spark10_RDD_Coalesce {
 
         newRDD.saveAsTextFile("output")
 
-
-
+//        part-00000
+//        1
+//        4
+//        5
+//
+//        part-00001
+//        2
+//        3
+//        6
 
         sc.stop()
 

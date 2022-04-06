@@ -15,9 +15,17 @@ object Spark12_RDD_SortBy {
 
         val newRDD: RDD[Int] = rdd.sortBy(num=>num)
 
-        newRDD.saveAsTextFile("output")
+        newRDD.saveAsTextFile("output1")
 
-
+        //        part-00000
+        //        1
+        //        2
+        //        3
+        //
+        //        part-00001
+        //        4
+        //        5
+        //        6
 
 
         sc.stop()

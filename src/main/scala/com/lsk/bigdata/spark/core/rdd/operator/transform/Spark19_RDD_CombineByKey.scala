@@ -38,9 +38,8 @@ object Spark19_RDD_CombineByKey {
         }
         resultRDD.collect().foreach(println)
 
-
-
-
+//        (b,4)
+//        (a,3)
 
         sc.stop()
 

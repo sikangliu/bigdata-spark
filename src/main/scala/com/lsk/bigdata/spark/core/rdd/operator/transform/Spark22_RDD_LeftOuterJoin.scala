@@ -25,7 +25,9 @@ object Spark22_RDD_LeftOuterJoin {
         //leftJoinRDD.collect().foreach(println)
         rightJoinRDD.collect().foreach(println)
 
-
+//        (a,(Some(1),4))
+//        (b,(Some(2),5))
+//        (c,(None,6))
 
         sc.stop()
 

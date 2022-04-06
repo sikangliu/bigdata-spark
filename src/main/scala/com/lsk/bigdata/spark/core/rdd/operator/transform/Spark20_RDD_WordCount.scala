@@ -60,8 +60,6 @@ object Spark20_RDD_WordCount {
 
 
 
-
-
         sc.stop()
 
     }

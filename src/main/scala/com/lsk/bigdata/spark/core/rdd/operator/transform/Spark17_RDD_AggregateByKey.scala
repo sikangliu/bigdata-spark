@@ -34,7 +34,7 @@ object Spark17_RDD_AggregateByKey {
         ).collect.foreach(println)
 
 
-
+//        (a,6)
 
 
         sc.stop()

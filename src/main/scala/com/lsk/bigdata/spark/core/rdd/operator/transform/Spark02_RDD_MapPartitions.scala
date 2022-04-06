@@ -27,5 +27,11 @@ object Spark02_RDD_MapPartitions {
 
         sc.stop()
 
+//        >>>>>>>>>>
+//        >>>>>>>>>>
+//        2
+//        4
+//        6
+//        8
     }
 }

@@ -20,7 +20,8 @@ object Spark07_RDD_Filter {
 
         filterRDD.collect().foreach(println)
 
-
+//        1
+//        3
         sc.stop()
 
     }

@@ -23,10 +23,16 @@ object Spark16_RDD_GroupByKey {
 
         groupRDD.collect().foreach(println)
 
+        println("-------------------")
         val groupRDD1: RDD[(String, Iterable[(String, Int)])] = rdd.groupBy(_._1)
 
+        groupRDD1.collect().foreach(println)
 
-
+//        (a,CompactBuffer(1, 2, 3))
+//        (b,CompactBuffer(4))
+//        -------------------
+//        (a,CompactBuffer((a,1), (a,2), (a,3)))
+//        (b,CompactBuffer((b,4)))
 
         sc.stop()
 

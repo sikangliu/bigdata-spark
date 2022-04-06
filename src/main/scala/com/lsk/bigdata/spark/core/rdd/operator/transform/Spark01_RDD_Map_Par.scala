@@ -24,6 +24,7 @@ object Spark01_RDD_Map_Par {
                 num
             }
         )
+
         val mapRDD1 = mapRDD.map(
             num => {
                 println("######" + num)

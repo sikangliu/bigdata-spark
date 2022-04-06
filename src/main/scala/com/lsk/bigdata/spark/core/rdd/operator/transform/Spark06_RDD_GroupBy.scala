@@ -23,6 +23,8 @@ object Spark06_RDD_GroupBy {
 
         groupRDD.collect().foreach(println)
 
+//        (0,CompactBuffer(2, 4))
+//        (1,CompactBuffer(1, 3))
 
         sc.stop()
 

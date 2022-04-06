@@ -33,16 +33,25 @@ object Spark17_RDD_AggregateByKey1 {
             (x, y) => x + y
         ).collect.foreach(println)
 
+        println("---------------------")
+
         rdd.aggregateByKey(0)(
             (x, y) => x + y,
             (x, y) => x + y
         ).collect.foreach(println)
 
+        println("---------------------")
+
         rdd.aggregateByKey(0)(_+_, _+_).collect.foreach(println)
 
-
-
-
+//        (b,10)
+//        (a,11)
+//        ---------------------
+//        (b,12)
+//        (a,9)
+//        ---------------------
+//        (b,12)
+//        (a,9)
 
         sc.stop()
 

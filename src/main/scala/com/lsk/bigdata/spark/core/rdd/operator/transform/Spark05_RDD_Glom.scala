@@ -20,7 +20,8 @@ object Spark05_RDD_Glom {
         glomRDD.collect().foreach(data=> println(data.mkString(",")))
 
 
-
+//        1,2
+//        3,4
 
 
         sc.stop()

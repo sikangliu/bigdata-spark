@@ -21,8 +21,15 @@ object Spark14_RDD_PartitionBy {
         val newRDD = mapRDD.partitionBy(new HashPartitioner(2))
         newRDD.partitionBy(new HashPartitioner(2))
 
-        newRDD.saveAsTextFile("output1")
+        newRDD.saveAsTextFile("output2")
 
+        //        part-00000
+        //        (2,1)
+        //        (4,1)
+        //
+        //        part-00001
+        //        (1,1)
+        //        (3,1)
 
 
 

@@ -23,6 +23,10 @@ object Spark09_RDD_Distinct {
 
         rdd1.collect().foreach(println)
 
+//        1
+//        2
+//        3
+//        4
 
 
         sc.stop()

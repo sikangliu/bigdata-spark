@@ -9,7 +9,7 @@ object Spark03_RDD_MapPartitionsWithIndex {
         val sparkConf = new SparkConf().setMaster("local[*]").setAppName("Operator")
         val sc = new SparkContext(sparkConf)
 
-        // TODO 算子 - mapPartitions
+        // TODO 算子 - mapPartitionsWithIndex
         val rdd = sc.makeRDD(List(1,2,3,4), 2)
         // 【1，2】，【3，4】
         val mpiRDD = rdd.mapPartitionsWithIndex(
@@ -25,6 +25,9 @@ object Spark03_RDD_MapPartitionsWithIndex {
 
 
         sc.stop()
+
+//        3
+//        4
 
     }
 }

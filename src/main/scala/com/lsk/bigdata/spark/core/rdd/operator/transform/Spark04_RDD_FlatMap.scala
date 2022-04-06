@@ -21,7 +21,10 @@ object Spark04_RDD_FlatMap {
         )
         flatRDD.collect().foreach(println)
 
-
+//        1
+//        2
+//        3
+//        4
 
         sc.stop()
 

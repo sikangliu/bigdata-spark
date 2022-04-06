@@ -18,6 +18,8 @@ object Spark06_RDD_GroupBy1 {
 
         groupRDD.collect().foreach(println)
 
+//        (H,CompactBuffer(Hello, Hadoop))
+//        (S,CompactBuffer(Spark, Scala))
 
         sc.stop()
 
