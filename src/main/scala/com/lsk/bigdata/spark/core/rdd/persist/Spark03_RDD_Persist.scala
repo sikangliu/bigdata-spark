@@ -32,6 +32,17 @@ object Spark03_RDD_Persist {
         val groupRDD = mapRDD.groupByKey()
         groupRDD.collect().foreach(println)
 
+//        @@@@@@@@@@@@
+//        @@@@@@@@@@@@
+//        @@@@@@@@@@@@
+//        @@@@@@@@@@@@
+//        (Spark,1)
+//        (Hello,2)
+//        (Scala,1)
+//        **************************************
+//        (Spark,CompactBuffer(1))
+//        (Hello,CompactBuffer(1, 1))
+//        (Scala,CompactBuffer(1))
 
         sc.stop()
     }

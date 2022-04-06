@@ -10,7 +10,7 @@ object Spark01_RDD_Dep {
         val sparConf = new SparkConf().setMaster("local").setAppName("WordCount")
         val sc = new SparkContext(sparConf)
 
-        val lines: RDD[String] = sc.textFile("datas/word.txt")
+        val lines: RDD[String] = sc.textFile("datas/input.txt")
         println(lines.toDebugString)
         println("*************************")
         val words: RDD[String] = lines.flatMap(_.split(" "))
@@ -24,6 +24,30 @@ object Spark01_RDD_Dep {
         println("*************************")
         val array: Array[(String, Int)] = wordToSum.collect()
         array.foreach(println)
+
+//        (1) datas/input.txt MapPartitionsRDD[1] at textFile at Spark01_RDD_Dep.scala:13 []
+//        |  datas/input.txt HadoopRDD[0] at textFile at Spark01_RDD_Dep.scala:13 []
+//        *************************
+//        (1) MapPartitionsRDD[2] at flatMap at Spark01_RDD_Dep.scala:16 []
+//        |  datas/input.txt MapPartitionsRDD[1] at textFile at Spark01_RDD_Dep.scala:13 []
+//        |  datas/input.txt HadoopRDD[0] at textFile at Spark01_RDD_Dep.scala:13 []
+//        *************************
+//        (1) MapPartitionsRDD[3] at map at Spark01_RDD_Dep.scala:19 []
+//        |  MapPartitionsRDD[2] at flatMap at Spark01_RDD_Dep.scala:16 []
+//        |  datas/input.txt MapPartitionsRDD[1] at textFile at Spark01_RDD_Dep.scala:13 []
+//        |  datas/input.txt HadoopRDD[0] at textFile at Spark01_RDD_Dep.scala:13 []
+//        *************************
+//        (1) ShuffledRDD[4] at reduceByKey at Spark01_RDD_Dep.scala:22 []
+//        +-(1) MapPartitionsRDD[3] at map at Spark01_RDD_Dep.scala:19 []
+//        |  MapPartitionsRDD[2] at flatMap at Spark01_RDD_Dep.scala:16 []
+//        |  datas/input.txt MapPartitionsRDD[1] at textFile at Spark01_RDD_Dep.scala:13 []
+//        |  datas/input.txt HadoopRDD[0] at textFile at Spark01_RDD_Dep.scala:13 []
+//        *************************
+//        (scala,1)
+//        (spark,1)
+//        (hello,4)
+//        (world,2)
+
 
         sc.stop()
 

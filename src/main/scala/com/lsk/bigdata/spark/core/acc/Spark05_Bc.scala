@@ -34,7 +34,9 @@ object Spark05_Bc {
             }
         }.collect().foreach(println)
 
-
+//      (a,(1,4))
+//      (b,(2,5))
+//      (c,(3,6))
 
         sc.stop()
 
