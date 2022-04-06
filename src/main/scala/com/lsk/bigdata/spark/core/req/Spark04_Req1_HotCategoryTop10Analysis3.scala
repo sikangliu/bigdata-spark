@@ -32,7 +32,7 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
                     val ids = datas(8).split(",")
                     ids.foreach(
                         id => {
-                            acc.add( (id, "order") )
+                            acc.add((id, "order"))
                         }
                     )
                 } else if (datas(10) != "null") {
@@ -40,7 +40,7 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
                     val ids = datas(10).split(",")
                     ids.foreach(
                         id => {
-                            acc.add( (id, "pay") )
+                            acc.add((id, "pay"))
                         }
                     )
                 }
@@ -52,10 +52,10 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
 
         val sort = categories.toList.sortWith(
             (left, right) => {
-                if ( left.clickCnt > right.clickCnt ) {
+                if (left.clickCnt > right.clickCnt) {
                     true
                 } else if (left.clickCnt == right.clickCnt) {
-                    if ( left.orderCnt > right.orderCnt ) {
+                    if (left.orderCnt > right.orderCnt) {
                         true
                     } else if (left.orderCnt == right.orderCnt) {
                         left.payCnt > right.payCnt
@@ -71,17 +71,30 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
         // 5. 将结果采集到控制台打印出来
         sort.take(10).foreach(println)
 
+        //      HotCategory(15,6120,1672,1259)
+        //      HotCategory(2,6119,1767,1196)
+        //      HotCategory(20,6098,1776,1244)
+        //      HotCategory(12,6095,1740,1218)
+        //      HotCategory(11,6093,1781,1202)
+        //      HotCategory(17,6079,1752,1231)
+        //      HotCategory(7,6074,1796,1252)
+        //      HotCategory(9,6045,1736,1230)
+        //      HotCategory(19,6044,1722,1158)
+        //      HotCategory(13,6036,1781,1161)
+
         sc.stop()
     }
-    case class HotCategory( cid:String, var clickCnt : Int, var orderCnt : Int, var payCnt : Int )
+
+    case class HotCategory(cid: String, var clickCnt: Int, var orderCnt: Int, var payCnt: Int)
+
     /**
-      * 自定义累加器
-      * 1. 继承AccumulatorV2，定义泛型
-      *    IN : ( 品类ID, 行为类型 )
-      *    OUT : mutable.Map[String, HotCategory]
-      * 2. 重写方法（6）
-      */
-    class HotCategoryAccumulator extends AccumulatorV2[(String, String), mutable.Map[String, HotCategory]]{
+     * 自定义累加器
+     * 1. 继承AccumulatorV2，定义泛型
+     * IN : ( 品类ID, 行为类型 )
+     * OUT : mutable.Map[String, HotCategory]
+     * 2. 重写方法（6）
+     */
+    class HotCategoryAccumulator extends AccumulatorV2[(String, String), mutable.Map[String, HotCategory]] {
 
         private val hcMap = mutable.Map[String, HotCategory]()
 
@@ -100,8 +113,8 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
         override def add(v: (String, String)): Unit = {
             val cid = v._1
             val actionType = v._2
-            val category: HotCategory = hcMap.getOrElse(cid, HotCategory(cid, 0,0,0))
-            if ( actionType == "click" ) {
+            val category: HotCategory = hcMap.getOrElse(cid, HotCategory(cid, 0, 0, 0))
+            if (actionType == "click") {
                 category.clickCnt += 1
             } else if (actionType == "order") {
                 category.orderCnt += 1
@@ -115,9 +128,9 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
             val map1 = this.hcMap
             val map2 = other.value
 
-            map2.foreach{
-                case ( cid, hc ) => {
-                    val category: HotCategory = map1.getOrElse(cid, HotCategory(cid, 0,0,0))
+            map2.foreach {
+                case (cid, hc) => {
+                    val category: HotCategory = map1.getOrElse(cid, HotCategory(cid, 0, 0, 0))
                     category.clickCnt += hc.clickCnt
                     category.orderCnt += hc.orderCnt
                     category.payCnt += hc.payCnt
@@ -128,4 +141,5 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
 
         override def value: mutable.Map[String, HotCategory] = hcMap
     }
+
 }

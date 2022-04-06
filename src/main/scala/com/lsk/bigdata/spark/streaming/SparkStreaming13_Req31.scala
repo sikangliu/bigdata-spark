@@ -20,7 +20,7 @@ object SparkStreaming13_Req31 {
 
         val kafkaPara: Map[String, Object] = Map[String, Object](
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG -> "linux1:9092,linux2:9092,linux3:9092",
-            ConsumerConfig.GROUP_ID_CONFIG -> "atguigu",
+            ConsumerConfig.GROUP_ID_CONFIG -> "lsk",
             "key.deserializer" -> "org.apache.kafka.common.serialization.StringDeserializer",
             "value.deserializer" -> "org.apache.kafka.common.serialization.StringDeserializer"
         )
@@ -28,7 +28,7 @@ object SparkStreaming13_Req31 {
         val kafkaDataDS: InputDStream[ConsumerRecord[String, String]] = KafkaUtils.createDirectStream[String, String](
             ssc,
             LocationStrategies.PreferConsistent,
-            ConsumerStrategies.Subscribe[String, String](Set("atguiguNew"), kafkaPara)
+            ConsumerStrategies.Subscribe[String, String](Set("lskNew"), kafkaPara)
         )
         val adClickData = kafkaDataDS.map(
             kafkaData => {
@@ -75,7 +75,7 @@ object SparkStreaming13_Req31 {
                 }
 
                 // 输出文件
-                val out = new PrintWriter(new FileWriter(new File("D:\\mineworkspace\\idea\\classes\\atguigu-classes\\datas\\adclick\\adclick.json")))
+                val out = new PrintWriter(new FileWriter(new File("D:\\mineworkspace\\idea\\classes\\lsk-classes\\datas\\adclick\\adclick.json")))
                 out.println("["+list.mkString(",")+"]")
                 out.flush()
                 out.close()

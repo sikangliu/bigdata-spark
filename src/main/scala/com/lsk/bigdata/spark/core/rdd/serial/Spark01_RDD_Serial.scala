@@ -9,7 +9,7 @@ object Spark01_RDD_Serial {
         val sparConf = new SparkConf().setMaster("local").setAppName("WordCount")
         val sc = new SparkContext(sparConf)
 
-        val rdd: RDD[String] = sc.makeRDD(Array("hello world", "hello spark", "hive", "atguigu"))
+        val rdd: RDD[String] = sc.makeRDD(Array("hello world", "hello spark", "hive", "lsk"))
 
         val search = new Search("h")
 

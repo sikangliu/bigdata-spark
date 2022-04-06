@@ -11,7 +11,7 @@ object Spark06_SparkSQL_Test {
         val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().enableHiveSupport().config(sparkConf).getOrCreate()
 
-        spark.sql("use atguigu")
+        spark.sql("use lsk")
 
         // 准备数据
         spark.sql(
@@ -35,7 +35,7 @@ object Spark06_SparkSQL_Test {
 
         spark.sql(
             """
-              |load data local inpath 'datas/user_visit_action.txt' into table atguigu.user_visit_action
+              |load data local inpath 'datas/user_visit_action.txt' into table lsk.user_visit_action
             """.stripMargin)
 
         spark.sql(
@@ -49,7 +49,7 @@ object Spark06_SparkSQL_Test {
 
         spark.sql(
             """
-              |load data local inpath 'datas/product_info.txt' into table atguigu.product_info
+              |load data local inpath 'datas/product_info.txt' into table lsk.product_info
             """.stripMargin)
 
         spark.sql(
@@ -63,7 +63,7 @@ object Spark06_SparkSQL_Test {
 
         spark.sql(
             """
-              |load data local inpath 'datas/city_info.txt' into table atguigu.city_info
+              |load data local inpath 'datas/city_info.txt' into table lsk.city_info
             """.stripMargin)
 
         spark.sql("""select * from city_info""").show

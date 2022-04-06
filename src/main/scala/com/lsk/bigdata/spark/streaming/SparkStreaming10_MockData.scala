@@ -29,7 +29,7 @@ object SparkStreaming10_MockData {
             mockdata().foreach(
                 data => {
                     // 向Kafka中生成数据
-                    val record = new ProducerRecord[String, String]("atguiguNew", data)
+                    val record = new ProducerRecord[String, String]("lskNew", data)
                     producer.send(record)
                     println(data)
                 }

@@ -7,7 +7,6 @@ object Spark06_Req3_PageflowAnalysis {
 
     def main(args: Array[String]): Unit = {
 
-        // TODO : Top10热门品类
         val sparConf = new SparkConf().setMaster("local[*]").setAppName("HotCategoryTop10Analysis")
         val sc = new SparkContext(sparConf)
 
@@ -119,3 +118,11 @@ object Spark06_Req3_PageflowAnalysis {
               city_id: Long
       )//城市 id
 }
+
+
+//页面2跳转到页面3单跳转换率为:0.019949423995504357
+//页面4跳转到页面5单跳转换率为:0.018323153803442533
+//页面1跳转到页面2单跳转换率为:0.01510989010989011
+//页面5跳转到页面6单跳转换率为:0.014594442885209093
+//页面3跳转到页面4单跳转换率为:0.016884531590413945
+//页面6跳转到页面7单跳转换率为:0.0192040077929307

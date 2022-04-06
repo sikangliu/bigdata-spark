@@ -11,7 +11,7 @@ object Spark06_SparkSQL_Test1 {
         val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().enableHiveSupport().config(sparkConf).getOrCreate()
 
-        spark.sql("use atguigu")
+        spark.sql("use lsk")
 
         spark.sql(
             """
